@@ -1,0 +1,77 @@
+{
+"polozky":[
+    {
+        "jmeno":"jablko zelené 1kg",
+        "cena":"100",
+        "kod":"1",
+        "img":"./images/golden.jpg"
+    },
+    {
+        "jmeno":"jablko červené 1kg",
+        "cena":"150",
+        "kod":"2",
+        "img":"./images/jablko cervene.jpg"
+    },
+    {
+        "jmeno":"salát malý",
+        "cena":"75",
+        "kod":"3",
+        "img":"./images/salat.jpg"
+    },
+    {
+        "jmeno":"salát velký",
+        "cena":"100",
+        "kod":"4",
+        "img":"./images/salatV.jpg"
+    },
+    {
+        "jmeno":"hruška 1kg",
+        "cena":"125",
+        "kod":"5",
+        "img":"./images/hruska.jpg"
+    },
+    {
+        "jmeno":"meloun",
+        "cena":"200",
+        "kod":"6",
+        "img":"./images/meloun.jpg"
+    },
+    {
+        "jmeno":"ananas",
+        "cena":"200",
+        "kod":"7",
+        "img":"./images/ananas.jpg"
+    },
+    {
+        "jmeno":"hroznové víno zelené 1kg",
+        "cena":"150",
+        "kod":"8",
+        "img":"./images/vino.jpg"
+    },
+    {
+        "jmeno":"hroznové víno červené 1kg",
+        "cena":"150",
+        "kod":"9",
+        "img":"./images/vinoc.jpg"
+    },
+    {
+        "jmeno":"rajče 1kg",
+        "cena":"175",
+        "kod":"10",
+        "img":"./images/rajce.jpg"
+    },
+    {
+        "jmeno":"mrkev 1kg",
+        "cena":"125",
+        "kod":"11",
+        "img":"./images/mrkev.jpg"
+    },
+    {
+        "jmeno":"okurka 1ks",
+        "cena":"40",
+        "kod":"12",
+        "img":"./images/okurka.jpg"
+    }
+    ]
+    
+}
