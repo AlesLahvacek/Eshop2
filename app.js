@@ -6,7 +6,7 @@ app.use(express.static(__dirname + "/views"))
 
 
 app.get("/", (req, res) => {
-    console.log("kokot")
+    console.log("hehe")
     res.render("index")
 });
 
