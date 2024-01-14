@@ -10,14 +10,11 @@ Object.keys(polozka["polozky"]).forEach(function(key) {
     console.log(polozka["polozky"][key].jmeno);
     let i = "polozka"+pocitani;
     let x = "cena"+pocitani;
-    document.getElementsByTagName("img")[pocitani-1].setAttribute("src", polozka["polozky"][key].img);
-    document.getElementsByTagName("article")[pocitani-1].setAttribute("data-kod", polozka["polozky"][key].kod);
-    const znaceni = document.getElementById(i);
-    const urceniCeny = document.getElementById(x);
-    znaceni.innerText = polozka["polozky"][key].jmeno;
-    urceniCeny.innerText = polozka["polozky"][key].cena+" Kč";
+    
+    
+    
 
- 
+    
 
     pocitani++;
     
@@ -69,10 +66,10 @@ function pridatDoKosiku(kod) {
 
 let articles = document.querySelectorAll('.sell');
 
-// Pro každý prvek <article> přidáme posluchače události 'click'
+
 articles.forEach(function(article) {
     article.addEventListener('click', function() {
-        // Předpokládáme, že kód produktu je uložen jako data atribut 'data-kod'
+        
         let kod = article.dataset.kod;
         pridatDoKosiku(kod);
     });

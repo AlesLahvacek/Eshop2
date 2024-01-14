@@ -59,9 +59,9 @@ cart.forEach(function(produkt, index) {
 
 let vymazatButton = document.getElementById('vymazat');
 
-// Přidáme posluchač události 'click' na tlačítko
+
 vymazatButton.addEventListener('click', function() {
-    // Smažeme obsah 'cart' v localStorage
+    
     localStorage.removeItem('cart');
     location.reload();
 });

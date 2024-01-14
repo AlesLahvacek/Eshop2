@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zdravá žrádelna</title>
+    <title><%=titulek%></title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,121 +30,22 @@
     </div>
    
     <div id="kontejner">
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka1"></h3>
-            <div>
-                <a ></a> <br>
-         <a id="cena1" class="cena"></a>
-            </div>
-        </article>
+        <% for(const produkt of produkty){ %>
+            <article class="sell">
+                <img  class="img2" src="/<%=produkt.img %>">
+                <h3 id="polozka1"><%= produkt.nazev %></h3>
+                <div>
+                    <a ></a> <br>
+             <a id="cena1" class="cena"><%= produkt.cena %> Kč</a>
+                </div>
+            </article>
+      <%  } %>
 
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka2"></h3>
-            <div>
-                <a ></a> <br>
-                <a id="cena2" class="cena">215</a>
-            </div>
-        </article>
 
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka3"></h3>
-            <div>
-                <a ></a> <br>
-                 <a id="cena3" class="cena">2010</a>
-            </div>
-        </article>
-
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka4"></h3>
-            <div>
-                <a ></a> <br>
-                <a id="cena4" class="cena">2</a>
-            </div>
-        </article>
 
         
-  
 
-    
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka5"></h3>
-            <div>
-                <a></a> <br>
-                 <a id="cena5" class="cena">225</a>
-            </div>
-        </article>
-
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka6"></h3>
-            <div>
-                <a ></a> <br>
-                 <a id="cena6" class="cena">214</a>
-            </div>
-        </article>
-
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka7">Ještěr 7</h3>
-            <div>
-                <a></a> <br>
-                 <a id="cena7" class="cena">275</a >
-            </div>
-        </article>
-
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka8">Ještěr 8</h3>
-            <div>
-                <a></a> <br>
-                 <a id="cena8" class="cena">42</a>
-            </div>
-        </article>
-
-
-    
-
-    
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka9">Ještěr 9</h3>
-            <div>
-                <a></a> <br>
-                 <a id="cena9" class="cena">785</a>
-            </div>
-        </article>
-
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka10">Ještěr 10</h3>
-            <div>
-                <a></a> <br>
-                 <a id="cena10" class="cena">200</a>
-            </div>
-        </article>
-
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka11">Ještěr 11</h3>
-            <div>
-                <a></a> <br>
-                 <a id="cena11" class="cena">200</a>
-            </div>
-        </article>
-
-        <article class="sell">
-            <img  class="img2">
-            <h3 id="polozka12">Ještěr 12</h3>
-            <div>
-                <a></a> <br>
-                 <a id="cena12" class="cena">200</a>
-            </div>
-        </article>
+       
 
 
  
