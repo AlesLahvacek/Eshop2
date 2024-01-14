@@ -26,19 +26,24 @@
 
     <div class="button">
         <button id="tlacitko"> Seřadit podle ceny </button>
-        <a href="kosik.html"> košík </a>
+        <a href="/kosik"> košík </a>
     </div>
    
     <div id="kontejner">
         <% for(const produkt of produkty){ %>
+        
             <article class="sell">
                 <img  class="img2" src="/<%=produkt.img %>">
                 <h3 id="polozka1"><%= produkt.nazev %></h3>
                 <div>
-                    <a ></a> <br>
-             <a id="cena1" class="cena"><%= produkt.cena %> Kč</a>
+                   <br>
+             <a id="cena1" class="cena"><%= produkt.cena %> Kč</a><br>
+                    <br>
+             <a id="koupit"  href="/pridat-do-kosiku?id=<%= produkt.ID %>">Koupit</a>
                 </div>
+ 
             </article>
+       
       <%  } %>
 
 

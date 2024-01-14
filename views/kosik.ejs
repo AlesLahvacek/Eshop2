@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Můj obchod</title>
+    <script src="kosik.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="/"> Hlavní nabídka </a>
+
+    <h2>Košík</h2>
+    
+    <button id="vymazat"><a href="/vymazat-kosik">Vymazat košík</a></button>
+<div id="kontejner">
+    <% produkty.forEach(function(produkt) { %>
+        <article class="sell">
+            <img  class="img2" src="/<%= produkt.img %>">
+            <h3 id="polozka1"><%= produkt.nazev %></h3>
+            <div>
+               <br>
+         <a id="cena1" class="cena"><%= produkt.cena %> Kč</a><br>
+                <br>
+         
+            </div>
+        </article>
+    <% }); %>
+</div>
+    
+</body> 
+</html>

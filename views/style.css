@@ -36,6 +36,11 @@ button{
     font-size: 20px;
 }
 
+#koupit{
+    padding: 5px;
+    background-color: rgb(81, 151, 79);
+}
+
 video {
     height: 500px;
     width: 100%;
