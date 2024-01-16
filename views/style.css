@@ -41,6 +41,17 @@ button{
     background-color: rgb(81, 151, 79);
 }
 
+#formular{
+    width: 300px;
+    
+}
+
+#objednavka{
+    padding-left: 50px;
+}
+
+
+
 video {
     height: 500px;
     width: 100%;

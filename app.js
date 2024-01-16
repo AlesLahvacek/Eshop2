@@ -99,27 +99,25 @@ app.get('/kosik/objednavka', (req, res) => {
 
 app.post('/odeslat-objednavku', (req, res) => {
     const { jmeno, prijmeni, email, telefon, adresa } = req.body;
-    
+    if (!req.session.kosik || req.session.kosik.length === 0) {
+       return res.redirect('/kosik?empty=true')
+    }
     const produkty = JSON.stringify(req.session.kosik || []);
     
-    if (!jmeno || !prijmeni || !email || !telefon || !adresa) {
-        return res.status(400).send('Všechna pole formuláře musí být vyplněna.');
-        
-      }
-
     const query = 'INSERT INTO objednavka (jmeno, prijmeni, email, telefon, adresa, produkty, vyrizena) VALUES (?, ?, ?, ?, ?, ?, ?)';
     
     db.query(query, [jmeno, prijmeni, email, telefon, adresa, produkty, 0], (err, result) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Došlo k chybě při zpracování objednávky.');
+            res.redirect('/kosik?error=true')
         } else {
-            res.send('Objednávka byla úspěšně odeslána.');
+            req.session.kosik = []
+            res.redirect('/kosik?send=true')
         }
     });
 });
 
-app.get('/vymazat-kosik', (req, res) => {
+app.get('/vymazat-kosik', (req, res) => { 
     req.session.kosik = [];
     res.redirect('/kosik');
 });

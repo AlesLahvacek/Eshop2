@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zdravá žrádelna</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body id="objednavka">
+    <button id="vymazat"><a href="/kosik">Zpět na košík</a></button>
     <h2>Formulář objednávky</h2>
-    <form action="/odeslat-objednavku" method="post">
+    <form action="/odeslat-objednavku" method="post" id="formular">
         <input type="text" name="jmeno" placeholder="Jméno" required>
         <input type="text" name="prijmeni" placeholder="Příjmení" required>
         <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="telefon" placeholder="Telefon" required>
+        <input type="text" name="telefon" placeholder="Telefon" required>
         <input type="text" name="adresa" placeholder="Adresa" required>
         <button type="submit">Odeslat objednávku</button>
     </form>
