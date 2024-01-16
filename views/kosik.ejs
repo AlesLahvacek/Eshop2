@@ -11,6 +11,9 @@
     <h2>Košík</h2>
     
     <button id="vymazat"><a href="/vymazat-kosik">Vymazat košík</a></button>
+    <form action="/kosik/objednavka" method="get">
+        <button type="submit">Pokračovat k objednávce</button>
+    </form>
 <div id="kontejner">
     <% produkty.forEach(function(produkt) { %>
         <article class="sell">

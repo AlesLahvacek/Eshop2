@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zdravá žrádelna</title>
+</head>
+<body>
+    <h2>Formulář objednávky</h2>
+    <form action="/odeslat-objednavku" method="post">
+        <input type="text" name="jmeno" placeholder="Jméno" required>
+        <input type="text" name="prijmeni" placeholder="Příjmení" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="telefon" placeholder="Telefon" required>
+        <input type="text" name="adresa" placeholder="Adresa" required>
+        <button type="submit">Odeslat objednávku</button>
+    </form>
+</body>
+</html>
