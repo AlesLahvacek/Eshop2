@@ -122,8 +122,28 @@ app.get('/vymazat-kosik', (req, res) => {
     res.redirect('/kosik');
 });
 
-const userRouter = require("./routes/users");
-app.use("/users", userRouter)
+app.get('/user', (req, res) => {
+    res.render('user');
+});
+
+app.post('/user', (req, res) => {
+    const { username, password } = req.body;
+    const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+    
+    db.query(query, [username, password], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.redirect('/user?error=true');
+        } else if (result.length > 0) {
+            // Uživatel nalezen
+            req.session.user = result[0];
+            res.redirect('/dashboard');
+        } else {
+            // Uživatel nenalezen
+            res.redirect('/user?invalid=true');
+        }
+    });
+});
 
 
 app.listen(1500); 
