@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/style/style.css">
+    <title>Zdravá žrádelna</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    
 </head>
 <body>
+
     <h1 id="db-text">Vítejte, <%= user.username %></h1>
     <% if (isAdmin) { %>
         <p id="admin">Jste přihlášen jako admin.</p>
@@ -20,6 +22,8 @@
                 <th>E-mail</th>
                 <th>Telefon</th>
                 <th>Produkty</th>
+                <th>Stav</th>
+                <th>Upravit</th>
             </tr>
             <% orders.forEach(order => { %>
                 <tr>
@@ -27,9 +31,24 @@
                     <td><%= order.email %></td>
                     <td><%= order.telefon %></td>
                     <td><%= order.produkty %></td>
+                    <% if(order.vyrizena === 0){ %>
+                    <td>Nevyřízena</td>
+                    <% }else{ %>
+                        <td>Vyřízena</td>
+                        <% } %>
+                        <td class="actions">
+                            <form action="/delete-order" method="POST">
+                                <input type="hidden" name="orderId" value="<%= order.id %>">
+                                <button type="submit">Smazat</button>
+                            </form>
+                            <form action="/toggle-order" method="POST">
+                                <input type="hidden" name="orderId" value="<%= order.id %>">
+                                <button type="submit">Změnit stav</button>
+                            </form>
                 </tr>
             <% }); %>
         </table>
         <% } %>
+   
 </body>
 </html>

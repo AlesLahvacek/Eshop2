@@ -163,16 +163,63 @@ app.get('/dashboard', (req, res) => {
                 res.render('dashboard', { user: req.session.user, isAdmin: req.session.user.admin === 1, orders });
             });
         } else {
-            res.render('dashboard',{user: req.session.user});
+            res.render('dashboard',{user: req.session.user,isAdmin: req.session.user.admin === 1});
         }
     }
 });
+
+app.post('/delete-order', (req, res) => {
+    const orderId = req.body.orderId
+    const query = 'DELETE FROM objednavka WHERE id = ?'
+    db.query(query, [orderId], (err, result) => {
+        if (err) {
+            console.error(err)
+        } else {
+            res.redirect('/dashboard')
+        }
+    })
+})
+
+app.post('/toggle-order', (req, res) => {
+    const orderId = req.body.orderId;
+    const query = 'UPDATE objednavka SET vyrizena = NOT vyrizena WHERE id = ?';
+    db.query(query, [orderId], (err, result) => {
+        if (err) {
+            console.error(err);
+        } else {
+            res.redirect('/dashboard');
+        }
+    });
+});
+
 
 app.post('/logout', (req, res) => {
     if(req.session) {
         req.session.user = null
     }
     res.redirect('/');
+});
+
+app.get('/register', (req, res) => {
+    res.render('register');  // Předpokládá se, že máte EJS šablonu s názvem 'register'
+});
+
+app.post('/register', (req, res) => {
+    const { username, password } = req.body;  // Získání uživatelského jména a hesla z těla požadavku
+
+    // Vytvoření dotazu pro vložení nového uživatele do databáze
+    const query = 'INSERT INTO users (username, password, admin) VALUES (?, ?, 0)';
+
+    // Provedení dotazu
+    db.query(query, [username, password], (err, result) => {
+        if (err) {
+            console.error(err);
+            // Zpracování chyby (např. uživatelské jméno již existuje)
+        } else {
+            // Pokud je vše v pořádku, přesměrujte uživatele na stránku /user
+            res.redirect('/user');
+        }
+    });
 });
 
 app.listen(1500); 
