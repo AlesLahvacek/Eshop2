@@ -3,7 +3,7 @@
 <head>
     <title>Můj obchod</title>
     <script src="kosik.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
 <a href="/"> Hlavní nabídka </a>
@@ -17,7 +17,7 @@
 <div id="kontejner">
     <% produkty.forEach(function(produkt) { %>
         <article class="sell">
-            <img  class="img2" src="/<%= produkt.img %>">
+            <img  class="img2" src="/images/<%= produkt.img %>">
             <h3 id="polozka1"><%= produkt.nazev %></h3>
             <div>
                <br>

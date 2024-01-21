@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=titulek%></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&family=Shantell+Sans:wght@300&display=swap"
@@ -15,25 +15,27 @@
 </head>
 
 <body>
-    
-    <div id="cent">
-        <video muted autoplay src="wp projekt cham video.mp4" loop></video>
-        <div class="center">Velký výběr</div>
-    </div>
+  
+    <% if (typeof user !== 'undefined' && user) { %>
+        <a href="/dashboard"><button><%= user.username %></button></a>
+    <% } else { %>
+        <a href="/user"><button>Přihlásit se</button></a>
+    <% } %>
 
     <h2 class="nadpis1">Aktuální nabídka</h2>
 
-
+    
     <div class="button">
         <button id="tlacitko"> Seřadit podle ceny </button>
-        <a href="/kosik"> košík </a>
+        <button><a href="/kosik"> košík </a></button>
+        
     </div>
    
     <div id="kontejner">
         <% for(const produkt of produkty){ %>
         
             <article class="sell">
-                <img  class="img2" src="/<%=produkt.img %>">
+                <img  class="img2" src="/images/<%=produkt.img %>">
                 <h3 id="polozka1"><%= produkt.nazev %></h3>
                 <div>
                    <br>

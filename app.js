@@ -30,7 +30,8 @@ app.get("/", (req, res) => {
         res.render('index', {
             titulek:"Zdravá žrádelna",
             produkty: resultData,
-            kosik: req.session.kosik || []
+            kosik: req.session.kosik || [],
+            user: req.session.user
         })
         
     })
@@ -83,13 +84,18 @@ app.get('/kosik', (req, res) => {
 
         Promise.all(queries)
             .then(results => {
-                res.render('kosik', {produkty: results});
+                res.render('kosik',
+                {produkty: results,
+                 user: req.session.user });
             })
             .catch(err => {
                 throw err;
             });
     } else {
-        res.render('kosik', {produkty: []});
+        res.render(
+            'kosik',
+            {produkty: [],
+             user: req.session.user });
     }
 });
 
@@ -123,7 +129,7 @@ app.get('/vymazat-kosik', (req, res) => {
 });
 
 app.get('/user', (req, res) => {
-    res.render('user');
+    res.render('user', { user: req.session.user });
 });
 
 app.post('/user', (req, res) => {
@@ -145,5 +151,28 @@ app.post('/user', (req, res) => {
     });
 });
 
+app.get('/dashboard', (req, res) => {
+    if(req.session && req.session.user){
+        let orders = [];
+        if(req.session.user.admin === 1) {
+            // Pokud je uživatel admin, načtěte všechny objednávky
+            const query = 'SELECT * FROM objednavka';
+            db.query(query, function(err, rows, fields) {
+                if (err) throw err;
+                orders = rows;
+                res.render('dashboard', { user: req.session.user, isAdmin: req.session.user.admin === 1, orders });
+            });
+        } else {
+            res.render('dashboard',{user: req.session.user});
+        }
+    }
+});
+
+app.post('/logout', (req, res) => {
+    if(req.session) {
+        req.session.user = null
+    }
+    res.redirect('/');
+});
 
 app.listen(1500); 
