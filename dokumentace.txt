@@ -1,0 +1,27 @@
+app.js
+1. Řádek 1-7 Importování potřebných modulů:
+   - express
+   - mysql
+   - express-session
+
+2. Řádek 9-16 Nastavení aplikace:
+   - Nastavení view engine na "ejs".
+   - Nastavení statických souborů.
+   - Nastavení sezení.
+
+3. Řádek 20-223 Definice tras:
+   - "/": Zobrazí hlavní stránku s produkty z databáze.
+   - "/pridat-do-kosiku": Přidá produkt do košíku.
+   - "/kosik": Zobrazí obsah košíku.
+   - "/kosik/objednavka": Zobrazí formulář pro objednávku.
+   - "/odeslat-objednavku": Zpracuje objednávku a uloží ji do databáze.
+   - "/vymazat-kosik": Vymaže obsah košíku.
+   - "/user": Zobrazí stránku uživatele.
+   - "/dashboard": Zobrazí dashboard pro správu objednávek (admin).
+   - "/delete-order": Smazání objednávky (admin).
+   - "/toggle-order": Změna stavu objednávky (admin).
+   - "/logout": Odhlášení uživatele.
+   - "/register": Zobrazí registrační formulář.
+   - "/register": Zpracuje registraci uživatele.
+
+4. Řádek 225 Spuštění aplikace na portu 1500.
