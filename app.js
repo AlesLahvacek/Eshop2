@@ -141,11 +141,9 @@ app.post('/user', (req, res) => {
             console.error(err);
             res.redirect('/user?error=true');
         } else if (result.length > 0) {
-            // Uživatel nalezen
             req.session.user = result[0];
             res.redirect('/dashboard');
         } else {
-            // Uživatel nenalezen
             res.redirect('/user?invalid=true');
         }
     });
@@ -155,7 +153,6 @@ app.get('/dashboard', (req, res) => {
     if(req.session && req.session.user){
         let orders = [];
         if(req.session.user.admin === 1) {
-            // Pokud je uživatel admin, načtěte všechny objednávky
             const query = 'SELECT * FROM objednavka';
             db.query(query, function(err, rows, fields) {
                 if (err) throw err;
@@ -201,22 +198,22 @@ app.post('/logout', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-    res.render('register');  // Předpokládá se, že máte EJS šablonu s názvem 'register'
+    res.render('register');  
 });
 
 app.post('/register', (req, res) => {
-    const { username, password } = req.body;  // Získání uživatelského jména a hesla z těla požadavku
+    const { username, password } = req.body; 
 
-    // Vytvoření dotazu pro vložení nového uživatele do databáze
+    
     const query = 'INSERT INTO users (username, password, admin) VALUES (?, ?, 0)';
 
-    // Provedení dotazu
+    
     db.query(query, [username, password], (err, result) => {
         if (err) {
             console.error(err);
-            // Zpracování chyby (např. uživatelské jméno již existuje)
+            
         } else {
-            // Pokud je vše v pořádku, přesměrujte uživatele na stránku /user
+            
             res.redirect('/user');
         }
     });
