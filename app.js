@@ -14,7 +14,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
-
+//udělat Stripe.js!
 
 
 app.get("/", (req, res) => {
