@@ -14,7 +14,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
-//udělat Stripe.js!
+// udělat mezitabulku v databázi pro lepší výpis objednávek
+// udělat Stripe.js!
 
 
 app.get("/", (req, res) => {
@@ -132,7 +133,7 @@ app.get('/user', (req, res) => {
     res.render('user', { user: req.session.user });
 });
 
-app.post('/user', (req, res) => {
+app.post('/user', (req, res) => {   // udělat bcrypt pro heslo
     const { username, password } = req.body;
     const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
     
@@ -201,7 +202,7 @@ app.get('/register', (req, res) => {
     res.render('register');  
 });
 
-app.post('/register', (req, res) => {
+app.post('/register', (req, res) => {   // udělat kontrolu správně zadaného hesla
     const { username, password } = req.body; 
 
     
