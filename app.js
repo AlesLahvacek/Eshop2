@@ -20,7 +20,7 @@ app.use(session({
 
 app.get("/", (req, res) => {
     const connection = mysql.createConnection(connectionString);
-    const sql = 'SELECT ID, nazev, cena, img FROM produkt'
+    const sql = 'SELECT produkt_id, nazev, cena, img FROM produkt'
     connection.query(sql, (err, resultData) => {
         if (err) {
             res.status(500).send(err.message);
@@ -72,7 +72,7 @@ app.get('/kosik', (req, res) => {
         let produktyKosik = [];
         let queries = produkty.map(id => {
             return new Promise((resolve, reject) => {
-                let sql = `SELECT * FROM produkt WHERE id = ${mysql.escape(id)}`;
+                let sql = `SELECT * FROM produkt WHERE produkt_id = ${mysql.escape(id)}`;
                 db.query(sql, (err, result) => {
                     if (err) {
                         reject(err);
@@ -202,11 +202,14 @@ app.get('/register', (req, res) => {
     res.render('register');  
 });
 
-app.post('/register', (req, res) => {   // udělat kontrolu správně zadaného hesla
-    const { username, password } = req.body; 
+app.post('/register', (req, res) => {  
+    const { username, password, repeat } = req.body; 
 
-    
-    const query = 'INSERT INTO users (username, password, admin) VALUES (?, ?, 0)';
+    if(password != repeat){
+        res.redirect('/register?error=true');
+        console.error(chyba);
+    }else{
+        const query = 'INSERT INTO users (username, password, admin) VALUES (?, ?, 0)';
 
     
     db.query(query, [username, password], (err, result) => {
@@ -218,6 +221,9 @@ app.post('/register', (req, res) => {   // udělat kontrolu správně zadaného 
             res.redirect('/user');
         }
     });
+    }
+    
+    
 });
 
 app.listen(1500); 
